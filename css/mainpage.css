@@ -516,7 +516,7 @@
   width: 100%;
   height: 100%;
   margin-top: 50px;
-  background-image: url("../assets/images/image\ copy\ 5.png");
+  background-image: url("/assets/images/image\ copy\ 5.png");
 background-position: center;
 background-size: contain;
 background-repeat: no-repeat;
@@ -529,7 +529,7 @@ background-repeat: no-repeat;
   aspect-ratio: 1;
   border-radius: 50%;
   border: #60839a63 3px solid;
-  background-image: url("../assets/images/image\ copy\ 2.png");
+  background-image: url("/assets/images/image\ copy\ 2.png");
   background-position: center;
   overflow: hidden;
 }
@@ -538,7 +538,7 @@ background-repeat: no-repeat;
   height: 350px;
   border-radius: 60px 10px 60px 5px;
   border: #7aabcb7a 3px solid;
-  background-image: url("../assets/images/image\ copy.png");
+  background-image: url("/assets/images/image\ copy.png");
   background-position: center;
   overflow: hidden;
 }
@@ -663,12 +663,12 @@ background-repeat: no-repeat;
 }
 
 .connexion-button {
-  background-image: url("../assets/images/image\ copy\ 3.png");
+  background-image: url("/assets/images/image\ copy\ 3.png");
   animation: cardAppear 0.8s ease-out 0.5s both;
 }
 
 .connexion-button2 {
-  background-image: url("../assets/images/image\ copy\ 4.png");
+  background-image: url("/assets/images/image\ copy\ 4.png");
   animation: cardAppear 0.8s ease-out 0.7s both;
 }
 
