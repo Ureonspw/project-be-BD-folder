@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="MediRdv - Plateforme de rendez-vous médicaux en ligne" />
+    <link rel="stylesheet" href="../../css/mainpage.css" />
+    <link rel="icon" href="../../assets/images/image.png"> 
+    <title>MediConnect</title>
+    
+  </head>
+  <body>
+    <div class="container"><div class="video-background">
+      <video autoplay muted loop id="background-video">
+        <source src="../../assets/video/videobg2.mp4" type="video/mp4">
+        <!-- Vous pouvez ajouter d'autres formats pour une meilleure compatibilité -->
+        <source src="../../assets/video/videobg2.mp4" type="video/webm">
+        <!-- Fallback pour les navigateurs qui ne supportent pas la vidéo -->
+        Votre navigateur ne supporte pas les vidéos HTML5.
+      </video>
+    </div>
+      <div class="headercontainer">
+        <div class="logo"></div>
+        <div class="boxhdcontainer">
+          <a href="index.html">Accueil</a>
+          <a href="about.html">À Propos de nous</a>
+          <a href="contact.html">Contacts</a>
+          <a href="login.html">Rendez-vous</a>
+        </div>
+        <button class="login" popovertarget="popover">Connexion</button>
+      </div>
+      <div class="contenuemainpage">
+        <h1>
+          Bienvenue sur votre plateforme de rendez-vous santé pour votre bien-être personnel
+        </h1>
+        <div class="contentmainpage">
+          <h2>Medi.Rdv</h2>
+          <div class="exploremenu">
+            <div class="menucontentexplore">
+              <div class="barcontent1">Consultation plus rapide</div>
+              <div class="barcontent2">
+                <div class="txtcontent">
+                  Vous permet de consulter rapidement les rendez-vous de vos
+                  proches
+                </div>
+                <div class="imgcontent">▸</div>
+              </div>
+            </div>
+            <div class="menucontentexplore">
+              <div class="barcontent1">Gestion simplifiée</div>
+              <div class="barcontent2">
+                <div class="txtcontent">
+                  Gérez facilement vos rendez-vous médicaux en quelques clics
+                </div>
+                <div class="imgcontent">▸</div>
+              </div>
+            </div>
+            <div class="menucontentexplore">
+              <div class="barcontent1">Suivi médical personnalisé</div>
+              <div class="barcontent2">
+                <div class="txtcontent">
+                  Accédez à votre historique médical et suivez vos consultations
+                </div>
+                <div class="imgcontent">▸</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="popover" class="popover" popover>
+      <div class="containerpop">
+        
+        <!-- Partie supérieure avec fond dégradé -->
+        <div class="containerpopbox1">
+          <div class="popup-header">
+            <div class="popup-logo-container">
+              <img src="../../assets/images/image.png" alt="MediConnect Logo" class="popup-logo">
+              <div class="logo-pulse"></div>
+            </div>
+            <h2>Connectez-vous à <span class="accent-text">MediConnect</span></h2>
+            <p class="popup-tagline">Votre santé, notre priorité</p>
+          </div>
+        </div>
+        
+        <!-- Onglets de connexion -->
+        
+        <!-- Formulaire de connexion -->
+        <div class="containerpopbox2">
+          <div class="tab-content active" id="login-tab">
+            <div class="input-container">
+              <label for="pseudo">
+                <i class="fas fa-user-circle"></i> Identifiant
+              </label>
+              <div class="input-field">
+                <input
+                  type="text"
+                  class="entree1"
+                  id="pseudo"
+                  placeholder="Email ou pseudo"
+                  autocomplete="username"
+                />
+                <span class="input-status-icon"></span>
+              </div>
+              <div class="input-hint">Votre email ou nom d'utilisateur</div>
+            </div>
+            
+            <div class="input-container">
+              <label for="password">
+                <i class="fas fa-lock"></i> Mot de passe
+              </label>
+              <div class="input-field password-field">
+                <input
+                  type="password"
+                  class="entree2"
+                  id="password"
+                  placeholder="Votre mot de passe"
+                  autocomplete="current-password"
+                />
+                <button type="button" id="togglePassword" class="toggle-password">
+                  <i class="fas fa-eye"></i>
+                </button>
+                <span class="input-status-icon"></span>
+              </div>
+              
+              <div class="login-options">
+                <div class="remember-me">
+                  <input type="checkbox" id="rememberMe" />
+                  <label for="rememberMe">Se souvenir de moi</label>
+                </div>
+                <a href="#" class="forgot-password">Mot de passe oublié?</a>
+              </div>
+            </div>
+            
+            <button class="login-button" id="loginButton">
+              <span>Connexion</span>
+              <div class="button-loader"></div>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            
+            <div class="login-divider">
+              <span>ou</span>
+            </div>
+            
+            <div class="social-login">
+              <p>Connectez-vous avec</p>
+              <div class="social-icons">
+                <button class="social-btn google" title="Se connecter avec Google">
+                  <i class="fab fa-google"></i>
+                  <span>Google</span>
+                </button>
+                <button class="social-btn facebook" title="Se connecter avec Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                  <span>Facebook</span>
+                </button>
+                <button class="social-btn apple" title="Se connecter avec Apple">
+                  <i class="fab fa-apple"></i>
+                  <span>Apple</span>
+                </button>
+              </div>
+            </div>
+            
+            <div class="login-footer">
+              <p>Nouveau sur MediConnect? <a href="./html/php/creationcompteutilisateur.html" class="switch-tab" data-tab="register">Créer un compte</a></p>
+            </div>
+          </div>
+          
+          <!-- Onglet d'inscription (masqué par défaut) -->
+        </div>
+        
+        <!-- Informations de sécurité -->
+        <div class="security-info">
+          <i class="fas fa-shield-alt"></i>
+          <span>Connexion sécurisée - Vos données sont protégées</span>
+        </div>
+      </div>
+    </div>
+    <div class="somme">
+      <span class="section-title">Qui sommes-nous ?</span> 
+      <div class="somme-content">
+        
+        <!-- Section Vision avec espace pour image -->
+        <div class="info-block">
+          <div class="text-content">
+            <h3>Notre Vision</h3>
+            <p>MediConnect est née d'une vision simple mais ambitieuse : révolutionner l'accès aux soins de santé en Afrique. 
+            Face aux défis d'un système médical souvent engorgé, nous avons créé une solution digitale permettant 
+            de connecter patients et professionnels de santé de manière fluide et efficace.</p>
+          </div>
+          <div class="image-container">
+            <!-- Emplacement pour insérer une image -->
+            <div class="image-placeholder">
+              <img src="../../assets/images/Nurse in Scrubs.jpg" alt="Notre vision" class="section-image">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section Mission avec espace pour image -->
+        <div class="info-block reverse">
+          <div class="text-content">
+            <h3>Notre Mission</h3>
+            <p>Chaque jour, nous œuvrons pour:</p>
+            <ul>
+              <li>Faciliter l'accès aux soins médicaux pour tous</li>
+              <li>Réduire les temps d'attente et optimiser la gestion des rendez-vous</li>
+              <li>Offrir une expérience utilisateur simple et intuitive</li>
+              <li>Garantir la confidentialité et la sécurité des données de santé</li>
+            </ul>
+          </div>
+          <div class="image-container">
+            <!-- Emplacement pour insérer une image -->
+            <div class="image-placeholdertest">
+              <!-- <img src="../../assets/images/Material Symbols Icon 24dp.png" alt="Notre mission" class="section-image"> -->
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Section Services avec espace pour image -->
+        <div class="info-block">
+          <div class="text-content">
+            <h3>Nos Services</h3>
+            <p>MediConnect propose une gamme complète de fonctionnalités:</p>
+            <div class="services-grid">
+              <div class="service-item">
+                <div class="service-icon">
+                  <img src="../../assets/images/Material Icons 24dp.png" alt="Icône rendez-vous">
+                </div>
+                <div class="service-text">
+                  <strong>Prise de rendez-vous en ligne</strong>
+                  <p>24h/24 et 7j/7, sans appel téléphonique</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <div class="service-icon">
+                  <img src="../../assets/images/Family Restroom Icon.png" alt="Icône famille">
+                </div>
+                <div class="service-text">
+                  <strong>Gestion familiale</strong>
+                  <p>Organisez les rendez-vous pour vos proches</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <div class="service-icon">
+                  <img src="../../assets/images/Active Notifications Icon.png" alt="Icône notifications">
+
+                </div>
+                <div class="service-text">
+                  <strong>Rappels automatiques</strong>
+                  <p>Notifications par SMS et email</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <div class="service-icon">
+                  <img src="../../assets/images/Medical Services Icon.png" alt="Icône dossier médical">
+
+                </div>
+                <div class="service-text">
+                  <strong>Dossier médical numérique</strong>
+                  <p>Accédez à votre historique de consultations</p>
+                </div>
+              </div>
+              <div class="service-item">
+                <div class="service-icon">
+                  <img src="../../assets/images/Videocam Icon.png" alt="Icône téléconsultation">
+
+                </div>
+                <div class="service-text">
+                  <strong>Téléconsultation</strong>
+                  <p>Consultez certains spécialistes à distance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="image-container">
+            <!-- Emplacement pour insérer une image -->
+            <div class="image-placeholder">
+              <img src="../../assets/images/Medical Patient Analysis.avif" alt="Nos services" class="section-image">
+            </div>
+          </div>
+        </div>
+        
+        <!-- Section Équipe avec espace pour image -->
+        <div class="info-block reverse">
+          <div class="text-content">
+            <h3>Notre Équipe</h3>
+            <p>Derrière MediConnect se trouve une équipe passionnée de professionnels de la santé, d'ingénieurs et de 
+            spécialistes du numérique, tous unis par la conviction que la technologie peut transformer positivement 
+            l'expérience des soins de santé. Nous collaborons étroitement avec des établissements médicaux et des 
+            praticiens pour garantir une solution adaptée aux besoins réels du terrain.</p>
+          </div>
+          <div class="image-container">
+            <!-- Emplacement pour insérer une image -->
+            <div class="image-placeholdertestimg">
+              <img src="../../assets/images/Medical Team Photo.jpg" alt="Notre équipe" class="section-image">
+            </div>
+          </div>
+
+        </div>
+        
+        <!-- Section Engagement avec espace pour image -->
+        <div class="info-block">
+          <div class="text-content">
+            <h3>Notre Engagement</h3>
+            <p>Nous nous engageons à améliorer continuellement notre plateforme en fonction de vos retours. 
+            La satisfaction de nos utilisateurs et la qualité des soins sont au cœur de nos préoccupations.</p>
+          </div>
+          <div class="image-container">
+            <!-- Emplacement pour insérer une image -->
+            <div class="image-placeholder2">
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    </div>
+
+    <div class="connexion">
+      <span> Qu'attends-tu alors ? <br> Rejoins-nous ! </span>
+      <div class="connexioncontainer">
+      <div class="connexion-button">
+        <div class="connexionbtn1cont">
+          Connecte-toi à ton compte pour profiter des offres de notre plateforme
+          <div class="slidebtn"> Connexion ✒︎</div>
+        </div>
+        
+      </div>
+      <div class="connexion-button2">
+        <div class="connexionbtn1cont">
+          Crée un compte pour découvrir tous nos services
+          <div class="slidebtn"> Inscription ✒︎</div>
+        </div> 
+</div>
+</div>
+        <div class="conclusion-block">
+          <p class="conclusion">MediConnect - Votre santé, notre priorité.</p>
+        </div>
+
+    <script src="../../js/mainpage.js"></script>
+
+    <!-- Ajout du lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Footer moderne et complet -->
+    <footer class="footer-container">
+      <!-- Section principale du footer -->
+      <div class="footer-main">
+        <!-- Colonne 1 : À propos -->
+        <div class="footer-section">
+          <div class="footer-brand">
+            <img src="../../assets/images/image.png" alt="MediRdv Logo" class="footer-logo">
+            <h3>MediConnect</h3>
+          </div>
+          <p class="footer-description">
+            Votre plateforme de confiance pour la prise de rendez-vous médicaux en Afrique. 
+            Nous connectons patients et professionnels de santé pour des soins plus accessibles.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Colonne 2 : Liens rapides -->
+        <div class="footer-section">
+          <h4>Liens rapides</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="about.html">À Propos de nous</a></li>
+            <li><a href="services.html">Nos services</a></li>
+            <li><a href="doctors.html">Nos médecins</a></li>
+            <li><a href="blog.html">Blog santé</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Colonne 3 : Services -->
+        <div class="footer-section">
+          <h4>Nos services</h4>
+          <ul class="footer-links">
+            <li><a href="#">Consultation en ligne</a></li>
+            <li><a href="#">Rendez-vous d'urgence</a></li>
+            <li><a href="#">Suivi médical</a></li>
+            <li><a href="#">Téléconsultation</a></li>
+            <li><a href="#">Dossier médical numérique</a></li>
+            <li><a href="#">Conseils santé</a></li>
+          </ul>
+        </div>
+
+        <!-- Colonne 4 : Contact -->
+        <div class="footer-section">
+          <h4>Contactez-nous</h4>
+          <ul class="contact-info">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>123 Avenue de la Santé<br>Abidjan, Cote d'Ivoire</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <span>+225 05 66 72 07 63</span>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <span>Ureon206@gmail.com</span>
+            </li>
+          </ul>
+          <div class="newsletter">
+            <h5>Newsletter</h5>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Votre email" required>
+              <button type="submit">S'abonner</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bande d'informations supplémentaires -->
+      <div class="footer-info">
+        <div class="info-container">
+          <div class="info-item">
+            <i class="fas fa-headset"></i>
+            <div class="info-content">
+              <h5>Support 24/7</h5>
+              <p>Assistance disponible à tout moment</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-user-md"></i>
+            <div class="info-content">
+              <h5>Médecins certifiés</h5>
+              <p>Experts qualifiés à votre service</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-lock"></i>
+            <div class="info-content">
+              <h5>Données sécurisées</h5>
+              <p>Protection garantie de vos informations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bas de page -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 MediConnect. Tous droits réservés.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Politique de confidentialité</a>
+            <a href="#">Conditions d'utilisation</a>
+            <a href="#">Plan du site</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+    /* Style du footer */
+    .footer-container {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: #2c3e50;
+      padding: 60px 0 0;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 50px;
+    }
+
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    /* Style des sections */
+    .footer-section {
+      margin-bottom: 30px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo {
+      width: 50px;
+      height: auto;
+    }
+
+    .footer-description {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Liens sociaux */
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #5184C1;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background-color: #3a6ca8;
+    }
+
+    /* Titres des sections */
+    .footer-section h4 {
+      color: #2c3e50;
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #5184C1;
+    }
+
+    /* Liens */
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.3s ease, padding-left 0.3s ease;
+      display: inline-block;
+    }
+
+    .footer-links a:hover {
+      color: #5184C1;
+      padding-left: 5px;
+    }
+
+    /* Contact info */
+    .contact-info {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 15px;
+      color: #666;
+    }
+
+    .contact-info i {
+      color: #5184C1;
+      font-size: 18px;
+      margin-top: 3px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      margin-top: 30px;
+    }
+
+    .newsletter h5 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      padding: 10px 20px;
+      background-color: #5184C1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background-color: #3a6ca8;
+    }
+
+    /* Bande d'informations */
+    .footer-info {
+      background-color: #fff;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+
+    .info-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      padding: 0 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .info-item i {
+      font-size: 24px;
+      color: #5184C1;
+    }
+
+    .info-content h5 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+
+    .info-content p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Bas de page */
+    .footer-bottom {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    .footer-bottom-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #5184C1;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .info-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+      }
+      
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .footer-section {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .footer-section:nth-child(2) { animation-delay: 0.2s; }
+    .footer-section:nth-child(3) { animation-delay: 0.4s; }
+    .footer-section:nth-child(4) { animation-delay: 0.6s; }
+    </style>
+
+    <script src="../../js/mainpage.js">
+      // Script pour le popup de connexion
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fermeture du popup
+        const closeBtn = document.getElementById('closePopup');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', function() {
+            document.getElementById('popover').hidePopover();
+          });
+        }
+        
+        // Système d'onglets
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const tabSlider = document.querySelector('.tab-slider');
+        
+        function switchTab(tabId) {
+          // Mise à jour des boutons
+          tabBtns.forEach(btn => {
+            if (btn.dataset.tab === tabId) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+          
+          // Mise à jour du slider
+          const activeIndex = Array.from(tabBtns).findIndex(btn => btn.classList.contains('active'));
+          tabSlider.style.left = `${activeIndex * 50}%`;
+          
+          // Mise à jour du contenu
+          tabContents.forEach(content => {
+            if (content.id === `${tabId}-tab`) {
+              content.classList.add('active');
+            } else {
+              content.classList.remove('active');
+            }
+          });
+        }
+        
+        tabBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            switchTab(this.dataset.tab);
+          });
+        });
+        
+        // Liens pour changer d'onglet
+        document.querySelectorAll('.switch-tab').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            switchTab(this.dataset.tab);
+          });
+        });
+        
+        // Fonction pour afficher/masquer le mot de passe
+        const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+        
+        togglePasswordBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const targetId = this.dataset.for || 'password';
+            const passwordInput = document.getElementById(targetId);
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            // Change l'icône en fonction de l'état
+            const icon = this.querySelector('i');
+            if (type === 'password') {
+              icon.classList.remove('fa-eye-slash');
+              icon.classList.add('fa-eye');
+            } else {
+              icon.classList.remove('fa-eye');
+              icon.classList.add('fa-eye-slash');
+            }
+          });
+        });
+        
+        // Validation des entrées
+        const inputs = document.querySelectorAll('.input-container input[type="text"], .input-container input[type="email"], .input-container input[type="password"]');
+        
+        inputs.forEach(input => {
+          input.addEventListener('input', function() {
+            const container = this.closest('.input-container');
+            
+            if (this.value.length > 0) {
+              container.classList.add('valid');
+              container.classList.remove('invalid');
+            } else {
+              container.classList.remove('valid');
+            }
+          });
+          
+          input.addEventListener('blur', function() {
+            validateInput(this);
+          });
+        });
+        
+        function validateInput(input) {
+          const container = input.closest('.input-container');
+          
+          if (input.value.length === 0) {
+            container.classList.remove('valid');
+            return;
+          }
+          
+          if (input.type === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(input.value)) {
+              container.classList.add('invalid');
+              container.classList.remove('valid');
+            }
+          }
+        }
+        
+        // Mesure de la force du mot de passe
+        const registerPassword = document.getElementById('registerPassword');
+        const strengthSegments = document.querySelectorAll('.strength-segment');
+        const strengthText = document.querySelector('.strength-text');
+        
+        if (registerPassword) {
+          registerPassword.addEventListener('input', function() {
+            const password = this.value;
+            const strength = measurePasswordStrength(password);
+            
+            updateStrengthIndicator(strength);
+          });
+        }
+        
+        function measurePasswordStrength(password) {
+          let score = 0;
+          
+          // Longueur
+          if (password.length > 6) score++;
+          if (password.length > 10) score++;
+          
+          // Complexité
+          if (/[A-Z]/.test(password)) score++;
+          if (/[0-9]/.test(password)) score++;
+          if (/[^A-Za-z0-9]/.test(password)) score++;
+          
+          return Math.min(score, 4);
+        }
+        
+        function updateStrengthIndicator(strength) {
+          const strengthClass = strength === 0 ? '' : 
+                                strength < 2 ? 'weak' : 
+                                strength < 3 ? 'medium' : 'strong';
+          
+          const strengthLabels = {
+            '': 'Force du mot de passe',
+            'weak': 'Faible',
+            'medium': 'Moyen',
+            'strong': 'Fort'
+          };
+          
+          // Mise à jour des segments
+          strengthSegments.forEach((segment, index) => {
+            segment.className = 'strength-segment';
+            if (index < strength) {
+              segment.classList.add(strengthClass);
+            }
+          });
+          
+          // Mise à jour du texte
+          if (strengthText) {
+            strengthText.textContent = strengthLabels[strengthClass];
+          }
+        }
+        
+        // Activer/désactiver le bouton d'inscription en fonction des termes acceptés
+        const termsCheckbox = document.getElementById('termsAccept');
+        const registerButton = document.getElementById('registerButton');
+        
+        if (termsCheckbox && registerButton) {
+          termsCheckbox.addEventListener('change', function() {
+            registerButton.disabled = !this.checked;
+          });
+        }
+        
+        // Animation de chargement sur le bouton de connexion
+        const loginButton = document.getElementById('loginButton');
+        
+        if (loginButton) {
+          loginButton.addEventListener('click', function() {
+            this.classList.add('loading');
+            
+            // Simuler un temps de chargement (À remplacer par votre logique d'authentification)
+            setTimeout(() => {
+              this.classList.remove('loading');
+              
+              // Simuler une connexion réussie (à modifier selon votre logique)
+              const pseudo = document.getElementById('pseudo').value;
+              const password = document.getElementById('password').value;
+              
+              if (pseudo && password) {
+                // Connecter l'utilisateur ou afficher un message d'erreur
+                showNotification('Connexion réussie!', 'success');
+                
+                // Rediriger après une connexion réussie
+                // Décommentez la ligne suivante pour effectuer une redirection
+                // window.location.href = 'dashboard.html';
+              } else {
+                showNotification('Veuillez remplir tous les champs', 'error');
+              }
+            }, 1500);
+          });
+        }
+        
+        // Fonction pour afficher les notifications
+        function showNotification(message, type) {
+          // Vérifier si une notification existe déjà
+          let notification = document.querySelector('.popup-notification');
+          
+          if (notification) {
+            notification.remove();
+          }
+          
+          // Créer une nouvelle notification
+          notification = document.createElement('div');
+          notification.className = `popup-notification ${type}`;
+          notification.innerHTML = `
+            <div class="notification-content">
+              <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+              <span>${message}</span>
+            </div>
+            <button class="close-notification">×</button>
+          `;
+          
+          // Ajouter au DOM
+          document.body.appendChild(notification);
+          
+          // Animation d'entrée
+          setTimeout(() => {
+            notification.classList.add('show');
+          }, 10);
+          
+          // Auto-fermeture après un délai
+          setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+              notification.remove();
+            }, 300);
+          }, 4000);
+          
+          // Bouton de fermeture
+          const closeBtn = notification.querySelector('.close-notification');
+          closeBtn.addEventListener('click', () => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+              notification.remove();
+            }, 300);
+          });
+        }
+        
+        // Effet de focus sur les champs de saisie
+        const inputFields = document.querySelectorAll('.input-container input');
+        
+        inputFields.forEach(input => {
+          input.addEventListener('focus', function() {
+            this.closest('.input-container').classList.add('focused');
+          });
+          
+          input.addEventListener('blur', function() {
+            this.closest('.input-container').classList.remove('focused');
+          });
+        });
+        
+        // Animation des boutons de médias sociaux
+        const socialButtons = document.querySelectorAll('.social-btn');
+        
+        socialButtons.forEach(btn => {
+          btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px)';
+          });
+          
+          btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+          });
+          
+          btn.addEventListener('click', function() {
+            const platform = this.classList.contains('google') ? 'Google' :
+                             this.classList.contains('facebook') ? 'Facebook' :
+                             this.classList.contains('apple') ? 'Apple' : '';
+            
+            showNotification(`Connexion avec ${platform} en cours...`, 'success');
+            
+            // Simuler un chargement
+            this.style.pointerEvents = 'none';
+            this.style.opacity = '0.7';
+            
+            setTimeout(() => {
+              this.style.pointerEvents = 'auto';
+              this.style.opacity = '1';
+            }, 2000);
+          });
+        });
+        
+        // Ajoutez le style CSS pour les notifications
+        const notificationStyle = document.createElement('style');
+        notificationStyle.textContent = `
+          .popup-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 300px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+          }
+          
+          .popup-notification.show {
+            transform: translateX(0);
+          }
+          
+          .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          
+          .popup-notification.success .notification-content i {
+            color: #28a745;
+          }
+          
+          .popup-notification.error .notification-content i {
+            color: #dc3545;
+          }
+          
+          .close-notification {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #666;
+          }
+          
+          .close-notification:hover {
+            color: #333;
+          }
+          
+          .input-container.focused {
+            animation: pulse-border 1.5s infinite;
+          }
+          
+          @keyframes pulse-border {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.01);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+        `;
+        
+        document.head.appendChild(notificationStyle);
+      });
+    </script>
+  </body>
+</html>
