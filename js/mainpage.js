@@ -104,3 +104,371 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   });
+
+
+
+
+  // Script pour le popup de connexion
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fermeture du popup
+    const closeBtn = document.getElementById('closePopup');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        document.getElementById('popover').hidePopover();
+      });
+    }
+    
+    // Système d'onglets
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const tabSlider = document.querySelector('.tab-slider');
+    
+    function switchTab(tabId) {
+      // Mise à jour des boutons
+      tabBtns.forEach(btn => {
+        if (btn.dataset.tab === tabId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      
+      // Mise à jour du slider
+      const activeIndex = Array.from(tabBtns).findIndex(btn => btn.classList.contains('active'));
+      tabSlider.style.left = `${activeIndex * 50}%`;
+      
+      // Mise à jour du contenu
+      tabContents.forEach(content => {
+        if (content.id === `${tabId}-tab`) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        switchTab(this.dataset.tab);
+      });
+    });
+    
+    // Liens pour changer d'onglet
+    document.querySelectorAll('.switch-tab').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        switchTab(this.dataset.tab);
+      });
+    });
+    
+    // Fonction pour afficher/masquer le mot de passe
+    const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+    
+    togglePasswordBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const targetId = this.dataset.for || 'password';
+        const passwordInput = document.getElementById(targetId);
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // Change l'icône en fonction de l'état
+        const icon = this.querySelector('i');
+        if (type === 'password') {
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        } else {
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        }
+      });
+    });
+    
+    // Validation des entrées
+    const inputs = document.querySelectorAll('.input-container input[type="text"], .input-container input[type="email"], .input-container input[type="password"]');
+    
+    inputs.forEach(input => {
+      input.addEventListener('input', function() {
+        const container = this.closest('.input-container');
+        
+        if (this.value.length > 0) {
+          container.classList.add('valid');
+          container.classList.remove('invalid');
+        } else {
+          container.classList.remove('valid');
+        }
+      });
+      
+      input.addEventListener('blur', function() {
+        validateInput(this);
+      });
+    });
+    
+    function validateInput(input) {
+      const container = input.closest('.input-container');
+      
+      if (input.value.length === 0) {
+        container.classList.remove('valid');
+        return;
+      }
+      
+      if (input.type === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(input.value)) {
+          container.classList.add('invalid');
+          container.classList.remove('valid');
+        }
+      }
+    }
+    
+    // Mesure de la force du mot de passe
+    const registerPassword = document.getElementById('registerPassword');
+    const strengthSegments = document.querySelectorAll('.strength-segment');
+    const strengthText = document.querySelector('.strength-text');
+    
+    if (registerPassword) {
+      registerPassword.addEventListener('input', function() {
+        const password = this.value;
+        const strength = measurePasswordStrength(password);
+        
+        updateStrengthIndicator(strength);
+      });
+    }
+    
+    function measurePasswordStrength(password) {
+      let score = 0;
+      
+      // Longueur
+      if (password.length > 6) score++;
+      if (password.length > 10) score++;
+      
+      // Complexité
+      if (/[A-Z]/.test(password)) score++;
+      if (/[0-9]/.test(password)) score++;
+      if (/[^A-Za-z0-9]/.test(password)) score++;
+      
+      return Math.min(score, 4);
+    }
+    
+    function updateStrengthIndicator(strength) {
+      const strengthClass = strength === 0 ? '' : 
+                            strength < 2 ? 'weak' : 
+                            strength < 3 ? 'medium' : 'strong';
+      
+      const strengthLabels = {
+        '': 'Force du mot de passe',
+        'weak': 'Faible',
+        'medium': 'Moyen',
+        'strong': 'Fort'
+      };
+      
+      // Mise à jour des segments
+      strengthSegments.forEach((segment, index) => {
+        segment.className = 'strength-segment';
+        if (index < strength) {
+          segment.classList.add(strengthClass);
+        }
+      });
+      
+      // Mise à jour du texte
+      if (strengthText) {
+        strengthText.textContent = strengthLabels[strengthClass];
+      }
+    }
+    
+    // Activer/désactiver le bouton d'inscription en fonction des termes acceptés
+    const termsCheckbox = document.getElementById('termsAccept');
+    const registerButton = document.getElementById('registerButton');
+    
+    if (termsCheckbox && registerButton) {
+      termsCheckbox.addEventListener('change', function() {
+        registerButton.disabled = !this.checked;
+      });
+    }
+    
+    // Animation de chargement sur le bouton de connexion
+    const loginButton = document.getElementById('loginButton');
+    
+    if (loginButton) {
+      loginButton.addEventListener('click', function() {
+        this.classList.add('loading');
+        
+        // Simuler un temps de chargement (À remplacer par votre logique d'authentification)
+        setTimeout(() => {
+          this.classList.remove('loading');
+          
+          // Simuler une connexion réussie (à modifier selon votre logique)
+          const pseudo = document.getElementById('pseudo').value;
+          const password = document.getElementById('password').value;
+          
+          if (pseudo && password) {
+            // Connecter l'utilisateur ou afficher un message d'erreur
+            showNotification('Connexion réussie!', 'success');
+            
+            // Rediriger après une connexion réussie
+            // Décommentez la ligne suivante pour effectuer une redirection
+            // window.location.href = 'dashboard.html';
+          } else {
+            showNotification('Veuillez remplir tous les champs', 'error');
+          }
+        }, 1500);
+      });
+    }
+    
+    // Fonction pour afficher les notifications
+    function showNotification(message, type) {
+      // Vérifier si une notification existe déjà
+      let notification = document.querySelector('.popup-notification');
+      
+      if (notification) {
+        notification.remove();
+      }
+      
+      // Créer une nouvelle notification
+      notification = document.createElement('div');
+      notification.className = `popup-notification ${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+          <span>${message}</span>
+        </div>
+        <button class="close-notification">×</button>
+      `;
+      
+      // Ajouter au DOM
+      document.body.appendChild(notification);
+      
+      // Animation d'entrée
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 10);
+      
+      // Auto-fermeture après un délai
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      }, 4000);
+      
+      // Bouton de fermeture
+      const closeBtn = notification.querySelector('.close-notification');
+      closeBtn.addEventListener('click', () => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          notification.remove();
+        }, 300);
+      });
+    }
+    
+    // Effet de focus sur les champs de saisie
+    const inputFields = document.querySelectorAll('.input-container input');
+    
+    inputFields.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.closest('.input-container').classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        this.closest('.input-container').classList.remove('focused');
+      });
+    });
+    
+    // Animation des boutons de médias sociaux
+    const socialButtons = document.querySelectorAll('.social-btn');
+    
+    socialButtons.forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+      });
+      
+      btn.addEventListener('click', function() {
+        const platform = this.classList.contains('google') ? 'Google' :
+                         this.classList.contains('facebook') ? 'Facebook' :
+                         this.classList.contains('apple') ? 'Apple' : '';
+        
+        showNotification(`Connexion avec ${platform} en cours...`, 'success');
+        
+        // Simuler un chargement
+        this.style.pointerEvents = 'none';
+        this.style.opacity = '0.7';
+        
+        setTimeout(() => {
+          this.style.pointerEvents = 'auto';
+          this.style.opacity = '1';
+        }, 2000);
+      });
+    });
+    
+    // Ajoutez le style CSS pour les notifications
+    const notificationStyle = document.createElement('style');
+    notificationStyle.textContent = `
+      .popup-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        min-width: 300px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        transform: translateX(120%);
+        transition: transform 0.3s ease;
+      }
+      
+      .popup-notification.show {
+        transform: translateX(0);
+      }
+      
+      .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .popup-notification.success .notification-content i {
+        color: #28a745;
+      }
+      
+      .popup-notification.error .notification-content i {
+        color: #dc3545;
+      }
+      
+      .close-notification {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: #666;
+      }
+      
+      .close-notification:hover {
+        color: #333;
+      }
+      
+      .input-container.focused {
+        animation: pulse-border 1.5s infinite;
+      }
+      
+      @keyframes pulse-border {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.01);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    `;
+    
+    document.head.appendChild(notificationStyle);
+  });

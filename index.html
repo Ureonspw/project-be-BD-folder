@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/css/mainpage.css">
     <link rel="icon" href="/assets/images/image.png"> 
     <title>MediConnect</title>
+    <script src="/js/mainpage.js">
+      // Script pour le popup de connexion
+    </script>
+
     
   </head>
   <body>
@@ -23,9 +27,9 @@
         <div class="logo"></div>
         <div class="boxhdcontainer">
           <a href="index.html">Accueil</a>
-          <a href="about.html">À Propos de nous</a>
-          <a href="contact.html">Contacts</a>
-          <a href="login.html">Rendez-vous</a>
+          <a href="#about">À Propos de nous</a>
+          <a  href="#contact">Contacts</a>
+          <a href="#services">Services</a>
         </div>
         <button class="login" popovertarget="popover">Connexion</button>
       </div>
@@ -132,7 +136,7 @@
               </div>
             </div>
             
-            <button class="login-button" id="loginButton">
+            <button class="login-button" id="loginButton" onclick="window.location.href='./html/php/mainpagecon.html'">
               <span>Connexion</span>
               <div class="button-loader"></div>
               <i class="fas fa-arrow-right"></i>
@@ -176,13 +180,13 @@
       </div>
     </div>
     <div class="somme">
-      <span class="section-title">Qui sommes-nous ?</span> 
+      <span class="section-title" id="about">Qui sommes-nous ?</span> 
       <div class="somme-content">
         
         <!-- Section Vision avec espace pour image -->
-        <div class="info-block">
+        <div class="info-block" >
           <div class="text-content">
-            <h3>Notre Vision</h3>
+            <h3  >Notre Vision</h3>
             <p>MediConnect est née d'une vision simple mais ambitieuse : révolutionner l'accès aux soins de santé en Afrique. 
             Face aux défis d'un système médical souvent engorgé, nous avons créé une solution digitale permettant 
             de connecter patients et professionnels de santé de manière fluide et efficace.</p>
@@ -219,7 +223,7 @@
         <!-- Section Services avec espace pour image -->
         <div class="info-block">
           <div class="text-content">
-            <h3>Nos Services</h3>
+            <h3 id="services">Nos Services</h3>
             <p>MediConnect propose une gamme complète de fonctionnalités:</p>
             <div class="services-grid">
               <div class="service-item">
@@ -400,14 +404,14 @@
         </div>
 
         <!-- Colonne 4 : Contact -->
-        <div class="footer-section">
+        <div class="footer-section" id="contact">
           <h4>Contactez-nous</h4>
           <ul class="contact-info">
             <li>
               <i class="fas fa-map-marker-alt"></i>
               <span>123 Avenue de la Santé<br>Abidjan, Cote d'Ivoire</span>
             </li>
-            <li>
+            <li >
               <i class="fas fa-phone"></i>
               <span>+225 05 66 72 07 63</span>
             </li>
@@ -467,647 +471,6 @@
       </div>
     </footer>
 
-    <style>
-    /* Style du footer */
-    .footer-container {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      color: #2c3e50;
-      padding: 60px 0 0;
-      font-family: 'Poppins', sans-serif;
-      margin-top: 50px;
-    }
 
-    .footer-main {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      padding: 0 20px;
-    }
-
-    /* Style des sections */
-    .footer-section {
-      margin-bottom: 30px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .footer-logo {
-      width: 50px;
-      height: auto;
-    }
-
-    .footer-description {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    /* Liens sociaux */
-    .social-links {
-      display: flex;
-      gap: 15px;
-    }
-
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: #5184C1;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .social-link:hover {
-      transform: translateY(-3px);
-      background-color: #3a6ca8;
-    }
-
-    /* Titres des sections */
-    .footer-section h4 {
-      color: #2c3e50;
-      font-size: 18px;
-      margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    .footer-section h4::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background-color: #5184C1;
-    }
-
-    /* Liens */
-    .footer-links {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 12px;
-    }
-
-    .footer-links a {
-      color: #666;
-      text-decoration: none;
-      transition: color 0.3s ease, padding-left 0.3s ease;
-      display: inline-block;
-    }
-
-    .footer-links a:hover {
-      color: #5184C1;
-      padding-left: 5px;
-    }
-
-    /* Contact info */
-    .contact-info {
-      list-style: none;
-      padding: 0;
-    }
-
-    .contact-info li {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 15px;
-      color: #666;
-    }
-
-    .contact-info i {
-      color: #5184C1;
-      font-size: 18px;
-      margin-top: 3px;
-    }
-
-    /* Newsletter */
-    .newsletter {
-      margin-top: 30px;
-    }
-
-    .newsletter h5 {
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 10px;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      outline: none;
-    }
-
-    .newsletter-form button {
-      padding: 10px 20px;
-      background-color: #5184C1;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .newsletter-form button:hover {
-      background-color: #3a6ca8;
-    }
-
-    /* Bande d'informations */
-    .footer-info {
-      background-color: #fff;
-      padding: 30px 0;
-      margin-top: 40px;
-    }
-
-    .info-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-around;
-      padding: 0 20px;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .info-item i {
-      font-size: 24px;
-      color: #5184C1;
-    }
-
-    .info-content h5 {
-      color: #2c3e50;
-      margin-bottom: 5px;
-    }
-
-    .info-content p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    /* Bas de page */
-    .footer-bottom {
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-
-    .footer-bottom-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-bottom-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s ease;
-    }
-
-    .footer-bottom-links a:hover {
-      color: #5184C1;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .footer-main {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .info-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .footer-main {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-bottom-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-      }
-      
-      .footer-bottom-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .footer-section {
-      animation: fadeIn 0.6s ease-out forwards;
-    }
-
-    .footer-section:nth-child(2) { animation-delay: 0.2s; }
-    .footer-section:nth-child(3) { animation-delay: 0.4s; }
-    .footer-section:nth-child(4) { animation-delay: 0.6s; }
-    </style>
-
-    <script src="/js/mainpage.js">
-      // Script pour le popup de connexion
-      document.addEventListener('DOMContentLoaded', function() {
-        // Fermeture du popup
-        const closeBtn = document.getElementById('closePopup');
-        if (closeBtn) {
-          closeBtn.addEventListener('click', function() {
-            document.getElementById('popover').hidePopover();
-          });
-        }
-        
-        // Système d'onglets
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        const tabSlider = document.querySelector('.tab-slider');
-        
-        function switchTab(tabId) {
-          // Mise à jour des boutons
-          tabBtns.forEach(btn => {
-            if (btn.dataset.tab === tabId) {
-              btn.classList.add('active');
-            } else {
-              btn.classList.remove('active');
-            }
-          });
-          
-          // Mise à jour du slider
-          const activeIndex = Array.from(tabBtns).findIndex(btn => btn.classList.contains('active'));
-          tabSlider.style.left = `${activeIndex * 50}%`;
-          
-          // Mise à jour du contenu
-          tabContents.forEach(content => {
-            if (content.id === `${tabId}-tab`) {
-              content.classList.add('active');
-            } else {
-              content.classList.remove('active');
-            }
-          });
-        }
-        
-        tabBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            switchTab(this.dataset.tab);
-          });
-        });
-        
-        // Liens pour changer d'onglet
-        document.querySelectorAll('.switch-tab').forEach(link => {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            switchTab(this.dataset.tab);
-          });
-        });
-        
-        // Fonction pour afficher/masquer le mot de passe
-        const togglePasswordBtns = document.querySelectorAll('.toggle-password');
-        
-        togglePasswordBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const targetId = this.dataset.for || 'password';
-            const passwordInput = document.getElementById(targetId);
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            
-            // Change l'icône en fonction de l'état
-            const icon = this.querySelector('i');
-            if (type === 'password') {
-              icon.classList.remove('fa-eye-slash');
-              icon.classList.add('fa-eye');
-            } else {
-              icon.classList.remove('fa-eye');
-              icon.classList.add('fa-eye-slash');
-            }
-          });
-        });
-        
-        // Validation des entrées
-        const inputs = document.querySelectorAll('.input-container input[type="text"], .input-container input[type="email"], .input-container input[type="password"]');
-        
-        inputs.forEach(input => {
-          input.addEventListener('input', function() {
-            const container = this.closest('.input-container');
-            
-            if (this.value.length > 0) {
-              container.classList.add('valid');
-              container.classList.remove('invalid');
-            } else {
-              container.classList.remove('valid');
-            }
-          });
-          
-          input.addEventListener('blur', function() {
-            validateInput(this);
-          });
-        });
-        
-        function validateInput(input) {
-          const container = input.closest('.input-container');
-          
-          if (input.value.length === 0) {
-            container.classList.remove('valid');
-            return;
-          }
-          
-          if (input.type === 'email') {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(input.value)) {
-              container.classList.add('invalid');
-              container.classList.remove('valid');
-            }
-          }
-        }
-        
-        // Mesure de la force du mot de passe
-        const registerPassword = document.getElementById('registerPassword');
-        const strengthSegments = document.querySelectorAll('.strength-segment');
-        const strengthText = document.querySelector('.strength-text');
-        
-        if (registerPassword) {
-          registerPassword.addEventListener('input', function() {
-            const password = this.value;
-            const strength = measurePasswordStrength(password);
-            
-            updateStrengthIndicator(strength);
-          });
-        }
-        
-        function measurePasswordStrength(password) {
-          let score = 0;
-          
-          // Longueur
-          if (password.length > 6) score++;
-          if (password.length > 10) score++;
-          
-          // Complexité
-          if (/[A-Z]/.test(password)) score++;
-          if (/[0-9]/.test(password)) score++;
-          if (/[^A-Za-z0-9]/.test(password)) score++;
-          
-          return Math.min(score, 4);
-        }
-        
-        function updateStrengthIndicator(strength) {
-          const strengthClass = strength === 0 ? '' : 
-                                strength < 2 ? 'weak' : 
-                                strength < 3 ? 'medium' : 'strong';
-          
-          const strengthLabels = {
-            '': 'Force du mot de passe',
-            'weak': 'Faible',
-            'medium': 'Moyen',
-            'strong': 'Fort'
-          };
-          
-          // Mise à jour des segments
-          strengthSegments.forEach((segment, index) => {
-            segment.className = 'strength-segment';
-            if (index < strength) {
-              segment.classList.add(strengthClass);
-            }
-          });
-          
-          // Mise à jour du texte
-          if (strengthText) {
-            strengthText.textContent = strengthLabels[strengthClass];
-          }
-        }
-        
-        // Activer/désactiver le bouton d'inscription en fonction des termes acceptés
-        const termsCheckbox = document.getElementById('termsAccept');
-        const registerButton = document.getElementById('registerButton');
-        
-        if (termsCheckbox && registerButton) {
-          termsCheckbox.addEventListener('change', function() {
-            registerButton.disabled = !this.checked;
-          });
-        }
-        
-        // Animation de chargement sur le bouton de connexion
-        const loginButton = document.getElementById('loginButton');
-        
-        if (loginButton) {
-          loginButton.addEventListener('click', function() {
-            this.classList.add('loading');
-            
-            // Simuler un temps de chargement (À remplacer par votre logique d'authentification)
-            setTimeout(() => {
-              this.classList.remove('loading');
-              
-              // Simuler une connexion réussie (à modifier selon votre logique)
-              const pseudo = document.getElementById('pseudo').value;
-              const password = document.getElementById('password').value;
-              
-              if (pseudo && password) {
-                // Connecter l'utilisateur ou afficher un message d'erreur
-                showNotification('Connexion réussie!', 'success');
-                
-                // Rediriger après une connexion réussie
-                // Décommentez la ligne suivante pour effectuer une redirection
-                // window.location.href = 'dashboard.html';
-              } else {
-                showNotification('Veuillez remplir tous les champs', 'error');
-              }
-            }, 1500);
-          });
-        }
-        
-        // Fonction pour afficher les notifications
-        function showNotification(message, type) {
-          // Vérifier si une notification existe déjà
-          let notification = document.querySelector('.popup-notification');
-          
-          if (notification) {
-            notification.remove();
-          }
-          
-          // Créer une nouvelle notification
-          notification = document.createElement('div');
-          notification.className = `popup-notification ${type}`;
-          notification.innerHTML = `
-            <div class="notification-content">
-              <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-              <span>${message}</span>
-            </div>
-            <button class="close-notification">×</button>
-          `;
-          
-          // Ajouter au DOM
-          document.body.appendChild(notification);
-          
-          // Animation d'entrée
-          setTimeout(() => {
-            notification.classList.add('show');
-          }, 10);
-          
-          // Auto-fermeture après un délai
-          setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-              notification.remove();
-            }, 300);
-          }, 4000);
-          
-          // Bouton de fermeture
-          const closeBtn = notification.querySelector('.close-notification');
-          closeBtn.addEventListener('click', () => {
-            notification.classList.remove('show');
-            setTimeout(() => {
-              notification.remove();
-            }, 300);
-          });
-        }
-        
-        // Effet de focus sur les champs de saisie
-        const inputFields = document.querySelectorAll('.input-container input');
-        
-        inputFields.forEach(input => {
-          input.addEventListener('focus', function() {
-            this.closest('.input-container').classList.add('focused');
-          });
-          
-          input.addEventListener('blur', function() {
-            this.closest('.input-container').classList.remove('focused');
-          });
-        });
-        
-        // Animation des boutons de médias sociaux
-        const socialButtons = document.querySelectorAll('.social-btn');
-        
-        socialButtons.forEach(btn => {
-          btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px)';
-          });
-          
-          btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-          });
-          
-          btn.addEventListener('click', function() {
-            const platform = this.classList.contains('google') ? 'Google' :
-                             this.classList.contains('facebook') ? 'Facebook' :
-                             this.classList.contains('apple') ? 'Apple' : '';
-            
-            showNotification(`Connexion avec ${platform} en cours...`, 'success');
-            
-            // Simuler un chargement
-            this.style.pointerEvents = 'none';
-            this.style.opacity = '0.7';
-            
-            setTimeout(() => {
-              this.style.pointerEvents = 'auto';
-              this.style.opacity = '1';
-            }, 2000);
-          });
-        });
-        
-        // Ajoutez le style CSS pour les notifications
-        const notificationStyle = document.createElement('style');
-        notificationStyle.textContent = `
-          .popup-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            min-width: 300px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transform: translateX(120%);
-            transition: transform 0.3s ease;
-          }
-          
-          .popup-notification.show {
-            transform: translateX(0);
-          }
-          
-          .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-          }
-          
-          .popup-notification.success .notification-content i {
-            color: #28a745;
-          }
-          
-          .popup-notification.error .notification-content i {
-            color: #dc3545;
-          }
-          
-          .close-notification {
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            color: #666;
-          }
-          
-          .close-notification:hover {
-            color: #333;
-          }
-          
-          .input-container.focused {
-            animation: pulse-border 1.5s infinite;
-          }
-          
-          @keyframes pulse-border {
-            0% {
-              transform: scale(1);
-            }
-            50% {
-              transform: scale(1.01);
-            }
-            100% {
-              transform: scale(1);
-            }
-          }
-        `;
-        
-        document.head.appendChild(notificationStyle);
-      });
-    </script>
   </body>
 </html>
