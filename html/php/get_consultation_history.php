@@ -49,7 +49,7 @@ try {
             'notes' => !empty($consultation['consultation_notes']) ? $consultation['consultation_notes'] : 'Aucune note disponible',
             'prescription' => !empty($consultation['consultation_prescription']) ? $consultation['consultation_prescription'] : 'Aucune prescription',
             'diagnostic' => !empty($consultation['consultation_diagnostic']) ? $consultation['consultation_diagnostic'] : 'Aucun diagnostic disponible',
-            'doctor_photo' => $consultation['doctor_photo'] ?? '../../assets/images/doctor-default.jpg'
+            'doctor_photo' => $consultation['doctor_photo'] ? '../../uploads/doctors/' . $consultation['doctor_photo'] : '../../assets/images/doctor-default.jpg'
         ];
     }, $consultations);
 

@@ -1160,7 +1160,7 @@ $user_name = $_SESSION['user_name'];
                                 doctorCard.className = 'doctor-card';
                                 
                                 // Utiliser une image par défaut si aucune photo n'est disponible
-                                const photoUrl = doctor.photo ? `../../assets/images/doctors/${doctor.photo}` : '../../assets/images/doctor-default.jpg';
+                                const photoUrl = doctor.photo ? `../../uploads/doctors/${doctor.photo}` : '../../assets/images/doctor-default.jpg';
                                 
                                 doctorCard.innerHTML = `
                                     <div class="doctor-photo">
@@ -1246,7 +1246,7 @@ $user_name = $_SESSION['user_name'];
                 .then(data => {
                     if (data.success) {
                         const doctor = data.doctor;
-                        const photoUrl = doctor.photo ? `../../assets/images/doctors/${doctor.photo}` : '../../assets/images/doctor-default.jpg';
+                        const photoUrl = doctor.photo ? `../../uploads/doctors/${doctor.photo}` : '../../assets/images/doctor-default.jpg';
                         
                         // Créer le modal de profil
                         const modal = document.createElement('div');

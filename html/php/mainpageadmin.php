@@ -24,7 +24,7 @@ $doctor_photo = $_SESSION['doctor_photo'];
     <title>MediRdv - Dashboard Docteur</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   </head>
-  <body>
+  <body data-doctor-id="<?php echo $_SESSION['doctor_id']; ?>">
     <div class="container">
       <div class="headercontainer">
         <div class="logo"></div>
@@ -210,7 +210,26 @@ $doctor_photo = $_SESSION['doctor_photo'];
                 </div>
               </div>
             </div>
+
+            <!-- Section des patients -->
+            <div class="dashboard-card patients-section">
+              <h3><i class="fas fa-users"></i> Patients</h3>
+              <div class="patients-list">
+                <!-- Les patients seront chargés dynamiquement -->
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Popup pour les détails du patient -->
+    <div id="patientDetailsPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h2>Détails du Patient</h2>
+        <div class="patient-details">
+          <!-- Les détails seront chargés dynamiquement -->
         </div>
       </div>
     </div>
@@ -230,7 +249,7 @@ $doctor_photo = $_SESSION['doctor_photo'];
           <div class="infcon">
             <h3>Photo: </h3> 
             <?php if($doctor_photo): ?>
-              <img src="<?php echo $doctor_photo; ?>" alt="Photo du docteur" style="max-width: 100px; border-radius: 50%;">
+              <img src="../../uploads/doctors/<?php echo $doctor_photo; ?>" alt="Photo du docteur" style="max-width: 100px; border-radius: 50%;">
             <?php else: ?>
               <samp>Non spécifié</samp>
             <?php endif; ?>
@@ -242,7 +261,7 @@ $doctor_photo = $_SESSION['doctor_photo'];
     
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../../js/doctor-dashboard.js"></script>
-    <script src="../../js/mainpage.js"></script>
+    <script src="../../js/patient-management.js"></script>
     <script src="../../js/blood-donation.js"></script>
   </body>
 </html>
