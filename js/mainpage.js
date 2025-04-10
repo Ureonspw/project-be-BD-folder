@@ -3,17 +3,6 @@ document.getElementById('showPassword').addEventListener('change', function() {
     passwordField.type = this.checked ? 'text' : 'password';
 });
 
-document.getElementById('loginButton').addEventListener('click', function() {
-    const pseudoField = document.getElementById('pseudo');
-    const passwordField = document.getElementById('password');
-
-    if (pseudoField.value.trim() === '' || passwordField.value.trim() === '') {
-        alert('Veuillez remplir tous les champs avant de continuer.');
-    } else {
-        window.location.href = 'mainpagecon.html';
-    }
-});
-
 let menuicn = document.querySelector(".menuicn");
 let nav = document.querySelector(".navcontainer");
 
@@ -472,3 +461,140 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.head.appendChild(notificationStyle);
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: [
+        {
+          title: 'Rendez-vous avec Dr. Martin',
+          start: '2024-03-15T14:00:00',
+          end: '2024-03-15T15:00:00'
+        },
+        // Add more events as needed
+      ],
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      }
+    });
+    calendar.render();
+
+    // Open modal on button click
+    document.querySelector('.new-appointment-btn').addEventListener('click', function() {
+      document.getElementById('new-appointment-modal').style.display = 'block';
+    });
+
+    // Close modal
+    document.querySelector('.close-modal').addEventListener('click', function() {
+      document.getElementById('new-appointment-modal').style.display = 'none';
+    });
+
+    // Handle form submission
+    document.getElementById('appointment-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Get form data
+      var specialty = this.querySelector('select[name="specialty"]').value;
+      var doctor = this.querySelector('select[name="doctor"]').value;
+      var date = this.querySelector('input[type="date"]').value;
+      var time = this.querySelector('select[name="time"]').value;
+      var reason = this.querySelector('textarea').value;
+
+      // Create a new appointment object
+      var newAppointment = {
+        title: 'Rendez-vous avec ' + doctor,
+        start: date + 'T' + time + ':00',
+        end: date + 'T' + (parseInt(time.split(':')[0]) + 1) + ':00:00',
+        status: 'pending'
+      };
+
+      // Add to pending list (for now, just log it)
+      console.log('New appointment added:', newAppointment);
+
+      // Close the modal
+      document.getElementById('new-appointment-modal').style.display = 'none';
+
+      // Optionally, update the UI to show the pending appointment
+      // This part would involve updating the DOM to reflect the new appointment
+    });
+  });
+
+// Gestion du formulaire de connexion
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('error-message');
+    const loginButton = document.getElementById('loginButton');
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    // Fonction pour afficher/masquer le mot de passe
+    if (togglePassword) {
+        togglePassword.addEventListener('click', function() {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('fa-eye');
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+        });
+    }
+
+    // Gestion de la soumission du formulaire
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Désactiver le bouton pendant la soumission
+            loginButton.disabled = true;
+            loginButton.querySelector('span').textContent = 'Connexion...';
+            
+            // Récupérer les données du formulaire
+            const formData = new FormData(loginForm);
+            
+            // Envoyer la requête AJAX
+            fetch('auth/login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirection vers la page principale
+                    window.location.href = 'mainpagecon.php';
+                } else {
+                    // Afficher le message d'erreur
+                    errorMessage.textContent = data.message;
+                    errorMessage.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                errorMessage.style.display = 'block';
+            })
+            .finally(() => {
+                // Réactiver le bouton
+                loginButton.disabled = false;
+                loginButton.querySelector('span').textContent = 'Connexion';
+            });
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialiser les éléments de la page principale
+  initMainPage();
+});
+
+function initMainPage() {
+  // Vérifier si l'élément existe avant d'ajouter l'écouteur
+  const element = document.querySelector('.element-a-verifier');
+  if (element) {
+    element.addEventListener('click', function() {
+      // Code à exécuter
+    });
+  }
+}
+
+
+
+  

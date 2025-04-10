@@ -1,0 +1,995 @@
+/* Doctor Dashboard Styles */
+:root {
+  --primary-color: #4a6fa5;
+  --secondary-color: #166088;
+  --accent-color: #47b8e0;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 30px auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.dashboard-header {
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.dashboard-header h2 {
+  color: var(--primary-color);
+  font-size: 32px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.dashboard-header h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+
+.dashboard-header p {
+  color: var(--dark-color);
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: var(--primary-color);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.dashboard-card:hover:before {
+  opacity: 1;
+}
+
+.dashboard-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-card h3 i {
+  margin-right: 10px;
+  color: var(--accent-color);
+}
+
+.dashboard-card-content {
+  min-height: 200px;
+}
+
+/* Appointments Section */
+.appointments-section {
+  grid-column: span 2;
+}
+
+.appointments-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.appointments-tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.appointments-tab:hover {
+  background-color: #f5f5f5;
+}
+
+.appointments-tab.active {
+  border-bottom: 2px solid #4CAF50;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.appointment-tab-content {
+  display: none;
+}
+
+.appointment-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.appointment-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.appointment-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-item.accepted {
+  border-left: 3px solid var(--success-color);
+}
+
+.appointment-item.rejected {
+  border-left: 3px solid var(--danger-color);
+}
+
+.appointment-item.completed {
+  border-left: 3px solid var(--primary-color);
+}
+
+.appointment-info {
+  margin-bottom: 10px;
+}
+
+.appointment-info h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.appointment-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.appointment-status {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.appointment-status:not([class*="bg-"]) {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.appointment-item[data-appointment-id="1"] .appointment-status,
+.appointment-item[data-appointment-id="2"] .appointment-status {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #856404;
+}
+
+.appointment-item.accepted .appointment-status {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+.appointment-item.rejected .appointment-status {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #721c24;
+}
+
+.appointment-item.completed .appointment-status {
+  background-color: rgba(74, 111, 165, 0.2);
+  color: #2c3e50;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3a7bc8;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #3d8b40;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #d32f2f;
+}
+
+.btn-secondary {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #757575;
+}
+
+.btn-info {
+  background-color: #03a9f4;
+  color: white;
+}
+
+.btn-info:hover {
+  background-color: #0288d1;
+}
+
+/* Calendar Section */
+.calendar-section {
+  grid-column: span 2;
+  margin-bottom: 20px;
+}
+
+.calendar-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-year {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  min-width: 200px;
+  text-align: center;
+}
+
+.calendar-view-options {
+  display: flex;
+  gap: 5px;
+}
+
+.calendar-view-options .btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  background-color: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.calendar-view-options .btn:hover {
+  background-color: #e0e0e0;
+}
+
+.calendar-view-options .btn.active {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  padding: 10px 0;
+  color: #555;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.calendar-day {
+  min-height: 100px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 5px;
+  position: relative;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.calendar-day:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.calendar-day.empty {
+  background-color: #f9f9f9;
+}
+
+.calendar-day.today {
+  background-color: #f0f7ff;
+  border-color: #4a90e2;
+}
+
+.calendar-day.has-appointment {
+  background-color: #f0fff0;
+  border-color: #4caf50;
+}
+
+.calendar-day-number {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+}
+
+.calendar-event {
+  font-size: 12px;
+  padding: 3px 5px;
+  margin-bottom: 3px;
+  background-color: #e3f2fd;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.calendar-event:hover {
+  background-color: #bbdefb;
+}
+
+.calendar-more {
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  margin-top: 3px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.calendar-more:hover {
+  background-color: #f0f0f0;
+}
+
+/* Styles pour les boutons de navigation */
+.prev-month, .next-month {
+  background-color: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-month:hover, .next-month:hover {
+  background-color: #e0e0e0;
+}
+
+.prev-month:active, .next-month:active {
+  transform: scale(0.95);
+}
+
+/* Styles pour la vue semaine */
+.calendar-week-view .calendar-day {
+  min-height: 150px;
+}
+
+/* Styles pour les messages de chargement et d'erreur */
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #f44336;
+  background-color: #ffebee;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.no-appointments {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Blood Donation Section */
+.blood-donation-section {
+  grid-column: span 2;
+}
+
+.donation-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: #666;
+  font-size: 14px;
+}
+
+.donation-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.donation-item {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.donation-item:hover {
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.donation-item.accepted {
+  border-left: 3px solid var(--success-color);
+}
+
+.donation-item.rejected {
+  border-left: 3px solid var(--danger-color);
+}
+
+.donation-info {
+  margin-bottom: 10px;
+}
+
+.donation-info h4 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.donation-info p {
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.donation-status {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.donation-item.accepted .donation-status {
+  background-color: rgba(40, 167, 69, 0.2);
+  color: #155724;
+}
+
+.donation-item.rejected .donation-status {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #721c24;
+}
+
+.blood-type-chart-container {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  position: relative;
+  min-height: 300px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.refresh-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-btn:hover {
+  background: linear-gradient(135deg, #45a049, #4CAF50);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.refresh-btn:disabled {
+  background: linear-gradient(135deg, #cccccc, #999999);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.refresh-btn i {
+  transition: transform 0.3s ease;
+}
+
+.refresh-btn:hover i {
+  transform: rotate(180deg);
+}
+
+.blood-type-chart {
+  height: 300px;
+  position: relative;
+  margin-top: 20px;
+}
+
+/* Couleurs des groupes sanguins */
+.blood-type-A-plus { background-color: #FF6384; }
+.blood-type-A-minus { background-color: #FF9F40; }
+.blood-type-B-plus { background-color: #FFCD56; }
+.blood-type-B-minus { background-color: #4BC0C0; }
+.blood-type-AB-plus { background-color: #36A2EB; }
+.blood-type-AB-minus { background-color: #9966FF; }
+.blood-type-O-plus { background-color: #FF6384; }
+.blood-type-O-minus { background-color: #C9CBCF; }
+
+/* Prescription Section */
+.prescription-section {
+  grid-column: span 2;
+}
+
+.prescription-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+textarea.form-control {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Prescription Popup */
+.prescription-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.prescription-popup-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.prescription-details {
+  margin: 15px 0;
+}
+
+.prescription-details p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .appointments-section,
+  .calendar-section,
+  .blood-donation-section,
+  .prescription-section {
+    grid-column: span 1;
+  }
+  
+  .prescription-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .appointments-tabs {
+    flex-direction: column;
+  }
+  
+  .appointments-tab {
+    border-bottom: 1px solid #eee;
+    border-left: none;
+  }
+  
+  .appointments-tab.active {
+    border-left: 3px solid var(--primary-color);
+    border-bottom: 1px solid #eee;
+  }
+  
+  .calendar-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .calendar-nav,
+  .calendar-view-options {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .month-year {
+    margin: 10px 0;
+  }
+  
+  .donation-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .appointment-item,
+  .donation-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .appointment-actions,
+  .donation-actions {
+    margin-top: 15px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-card {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.dashboard-card:nth-child(1) { animation-delay: 0.1s; }
+.dashboard-card:nth-child(2) { animation-delay: 0.2s; }
+.dashboard-card:nth-child(3) { animation-delay: 0.3s; }
+.dashboard-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Notifications */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+  background-color: var(--success-color);
+}
+
+.notification.error {
+  background-color: var(--danger-color);
+}
+
+.notification.info {
+  background-color: var(--primary-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Historique des dons */
+.donation-history-container {
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.history-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.history-filters .form-control {
+  flex: 1;
+  max-width: 200px;
+}
+
+.donation-history {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.history-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 4px solid #4CAF50;
+  transition: all 0.3s ease;
+}
+
+.history-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-item.cancelled {
+  border-left-color: #f44336;
+}
+
+.history-item.completed {
+  border-left-color: #4CAF50;
+}
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.history-item-title {
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.history-item-date {
+  color: #666;
+  font-size: 14px;
+}
+
+.history-item-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.history-item-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-item-detail-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.history-item-detail-value {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+.history-item-status {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.history-item-status.completed {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #2e7d32;
+}
+
+.history-item-status.cancelled {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #c62828;
+}
+
+.history-item-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.history-item-actions button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.history-item-actions .btn-view {
+  background-color: #2196F3;
+  color: white;
+}
+
+.history-item-actions .btn-view:hover {
+  background-color: #1976D2;
+}
+
+.history-item-actions .btn-print {
+  background-color: #607D8B;
+  color: white;
+}
+
+.history-item-actions .btn-print:hover {
+  background-color: #455A64;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .history-filters {
+    flex-direction: column;
+  }
+  
+  .history-filters .form-control {
+    max-width: 100%;
+  }
+  
+  .history-item-details {
+    grid-template-columns: 1fr;
+  }
+}
