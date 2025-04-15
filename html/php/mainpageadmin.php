@@ -19,6 +19,7 @@ $doctor_photo = $_SESSION['doctor_photo'];
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="../../css/mainpageadmin.css" />
     <link rel="stylesheet" href="../../css/doctor-dashboard.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="icon" href="../../assets/images/image.png"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediRdv - Dashboard Docteur</title>
@@ -82,7 +83,6 @@ $doctor_photo = $_SESSION['doctor_photo'];
                 <div class="appointments-tab" data-tab="confirme">Acceptés</div>
                 <div class="appointments-tab" data-tab="termine">Terminés</div>
               </div>
-              
               <div class="appointment-tab-content" id="en_attente-appointments">
                 <div class="appointment-list">
                   <!-- Les rendez-vous en attente seront chargés dynamiquement -->
@@ -101,7 +101,6 @@ $doctor_photo = $_SESSION['doctor_photo'];
                 </div>
               </div>
             </div>
-            
             <!-- Section du calendrier -->
             <div class="dashboard-card calendar-section">
               <h3><i class="fas fa-calendar-alt"></i> Emploi du temps</h3>
@@ -204,6 +203,30 @@ $doctor_photo = $_SESSION['doctor_photo'];
               <h3><i class="fas fa-users"></i> Patients</h3>
               <div class="patients-list">
                 <!-- Les patients seront chargés dynamiquement -->
+              </div>
+            </div>
+
+            <!-- Section d'envoi d'emails -->
+            <div class="dashboard-card email-section">
+              <h3><i class="fas fa-envelope" id="status"> <br> </i> Envoi d'Email de notification patient</h3>
+              <div class="email-form">
+                <div class="form-group">
+                  <label for="email-recipient">Destinataire</label>
+                  <input type="email" id="email-recipient" class="form-control" placeholder="Entrez l'adresse email du destinataire" required>
+                </div>
+                <div class="form-group">
+                  <label for="email-subject">Sujet</label>
+                  <input type="text" id="email-subject" class="form-control" placeholder="Entrez le sujet de l'email" required>
+                </div>
+                <div class="form-group">
+                  <label for="email-content">Contenu</label>
+                  <textarea id="email-content" class="form-control" rows="5" placeholder="Entrez le contenu de votre email" required></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="button" class="btn btn-primary send-email-btn" onclick="sendEmail()">
+                    <i class="fas fa-paper-plane"></i> Envoyer l'email
+                  </button>
+                </div>
               </div>
             </div>
           </div>

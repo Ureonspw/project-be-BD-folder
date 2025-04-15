@@ -145,6 +145,7 @@ function updateAppointmentStatus(appointmentId, status) {
   formData.append('appointment_id', appointmentId);
   formData.append('status', status);
 
+
   fetch('../php/update_appointment.php', {
     method: 'POST',
     body: formData
@@ -767,4 +768,93 @@ function showNotification(message, type = 'info') {
   setTimeout(() => {
     notification.remove();
   }, 3000);
+}
+
+function sendEmail() {
+  const recipient = document.getElementById('email-recipient').value;
+  const subject = document.getElementById('email-subject').value;
+  const content = document.getElementById('email-content').value;
+
+  if (!recipient || !subject || !content) {
+    alert('Veuillez remplir tous les champs');
+    return;
+  }
+
+  // Créer un objet FormData pour envoyer les données
+  const formData = new FormData();
+  formData.append('recipient', recipient);
+  formData.append('subject', subject);
+  formData.append('content', content);
+
+  // Envoyer la requête au serveur
+  fetch('send_email.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Email envoyé avec succès!');
+      // Réinitialiser le formulaire
+      document.getElementById('email-recipient').value = '';
+      document.getElementById('email-subject').value = '';
+      document.getElementById('email-content').value = '';
+    } else {
+      alert('Erreur lors de l\'envoi de l\'email: ' + data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Une erreur est survenue lors de l\'envoi de l\'email');
+  });
+}
+
+
+
+
+
+
+
+try {
+    emailjs.init("OFTyJSgF1HubqBCmk");
+    document.getElementById('status').innerHTML = "EmailJS est prêt";
+    document.getElementById('status').style.color = "green";
+} catch (error) {
+    document.getElementById('status').innerHTML = "Erreur: " + error.message;
+    document.getElementById('status').style.color = "red";
+}
+
+function sendEmail() {
+    if (typeof emailjs === 'undefined') {
+        document.getElementById('status').innerHTML = "Erreur: EmailJS n'est pas chargé";
+        document.getElementById('status').style.color = "red";
+        return;
+    }
+
+    var statusDiv = document.getElementById('status');
+    statusDiv.innerHTML = "Envoi en cours...";
+    statusDiv.style.color = "blue";
+
+    var params = {
+        sender_name: "mediconnect", 
+        to: document.getElementById('email-recipient').value,
+        subject: document.getElementById('email-subject').value,
+        replyto: "ureon206@gmail.com",
+        message: document.getElementById('email-content').value,
+    };
+    
+    var service_id = "service_tmdjkv7";
+    var template_id = "template_y5k8m1p";
+    
+    emailjs.send(service_id, template_id, params)
+        .then(function(response) {
+            statusDiv.innerHTML = "Email envoyé avec succès!";
+            statusDiv.style.color = "green";
+            console.log('SUCCESS!', response.status, response.text);
+        })
+        .catch(function(error) {
+            statusDiv.innerHTML = "Erreur lors de l'envoi: " + error.text;
+            statusDiv.style.color = "red";
+            console.log('FAILED...', error);
+        });
 }
