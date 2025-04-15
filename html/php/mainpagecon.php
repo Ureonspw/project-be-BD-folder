@@ -615,12 +615,6 @@ $user_name = $_SESSION['user_name'];
     <div class="container">
       <div class="headercontainer">
         <div class="logo"></div>
-        <div class="boxhdcontainer">
-          <a href="index.html">Acceuil</a>
-          <a href="about.html">A Propos de nous</a>
-          <a href="contact.html">Contacts</a>
-          <a href="login.html">Rendez vous</a>
-        </div>
         <button class="login" popovertarget="popover"><?php echo $user_name; ?></button>
       </div>
       <div class="contenuemainpage">
@@ -669,66 +663,29 @@ $user_name = $_SESSION['user_name'];
             <i class="fas fa-home"></i>
             <span>Tableau de bord</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="#rdv" class="nav-item">
             <i class="fas fa-calendar-alt"></i>
             <span>Mes rendez-vous</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="#doctors" class="nav-item">
             <i class="fas fa-user-md"></i>
             <span>Docteurs</span>
           </a>
-          <a href="#" class="nav-item">
+          <a href="#donation" class="nav-item">
+            <i class="fas fa-tint"></i>
+            <span>Dons de sang</span>
+          </a>
+          <a href="#history" class="nav-item">
             <i class="fas fa-history"></i>
             <span>Historique</span>
           </a>
-          <a href="#" class="nav-item">
-            <i class="fas fa-cog"></i>
-            <span>Paramètres</span>
-          </a>
         </nav>
 
-        <div class="sidebar-footer">
-          <a href="mainpage.html" class="logout-btn">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Déconnexion</span>
-          </a>
-        </div>
       </aside>
 
       <!-- Main Content -->
       <main class="main-content">
         <!-- Top Header -->
-        <header class="dashboard-header">
-          <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Rechercher...">
-          </div>
-          
-          <div class="header-right">
-            <div class="notifications" id="notif-toggle">
-              <i class="fas fa-bell"></i>
-              <span class="notif-badge">3</span>
-              
-              <!-- Notifications Dropdown -->
-              <div class="notifications-dropdown" id="notif-dropdown">
-                <div class="notif-header">
-                  <h3>Notifications</h3>
-                  <button class="mark-all-read">Tout marquer comme lu</button>
-                </div>
-                
-                <div class="notif-list">
-                  <!-- Les notifications seront chargées dynamiquement ici -->
-                </div>
-              </div>
-            </div>
-            
-            <div class="user-profile">
-              <img src="../../assets/images/profile-placeholder.jpg" alt="Photo de profil">
-              <span><?php echo $user_name; ?></span>
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-        </header>
 
         <!-- Dashboard Content -->
         <div class="dashboard-content">
@@ -787,7 +744,7 @@ $user_name = $_SESSION['user_name'];
                 <i class="fas fa-calendar-check"></i>
               </div>
               <div class="stat-info">
-                <h3>Prochains RDV</h3>
+                <h3 id="rdv">Prochains RDV</h3>
                 <p><?php echo $next_appointments; ?> rendez-vous</p>
               </div>
             </div>
@@ -831,11 +788,7 @@ $user_name = $_SESSION['user_name'];
           <!-- Enhanced Doctors Section -->
           <section class="doctors-section">
             <div class="section-header">
-              <h2>Docteurs Disponibles</h2>
-              <button class="new-appointment-btn">
-                <i class="fas fa-plus"></i>
-                Nouveau rendez-vous
-              </button>
+              <h2 id="doctors">Docteurs Disponibles</h2>
             </div>
             <div class="doctors-list" id="doctors-list">
               <!-- Les docteurs seront chargés dynamiquement -->
@@ -846,7 +799,7 @@ $user_name = $_SESSION['user_name'];
           <!-- Blood Donation Section -->
           <section class="blood-donation-section">
             <div class="section-header">
-              <h2>Dons de Sang</h2>
+              <h2 id="donation">Dons de Sang</h2>
               <button class="new-donation-btn">
                 <i class="fas fa-plus"></i>
                 Nouveau don de sang
@@ -861,7 +814,7 @@ $user_name = $_SESSION['user_name'];
           <!-- Enhanced History Section -->
           <section class="history-section">
             <div class="section-header">
-              <h2>Historique des consultations</h2>
+              <h2 id="history">Historique des consultations</h2>
             </div>
             <div class="history-list">
               <!-- L'historique sera chargé dynamiquement ici -->
@@ -1178,9 +1131,8 @@ $user_name = $_SESSION['user_name'];
                                             <button class="book-appointment-btn" data-doctor-id="${doctor.id}" data-specialty="${doctor.specialite}">
                                                 <i class="fas fa-calendar-plus"></i> Prendre rendez-vous
                                             </button>
-                                            <button class="view-profile-btn" data-doctor-id="${doctor.id}">
-                                                <i class="fas fa-user-md"></i> Voir le profil
-                                            </button>
+                                          
+
                                         </div>
                                     </div>
                                 `;

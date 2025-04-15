@@ -28,12 +28,6 @@ $doctor_photo = $_SESSION['doctor_photo'];
     <div class="container">
       <div class="headercontainer">
         <div class="logo"></div>
-        <div class="boxhdcontainer">
-          <a href="index.html">Acceuil</a>
-          <a href="about.html">A Propos de nous</a>
-          <a href="contact.html">Contacts</a>
-          <a href="login.html">Rendez vous</a>
-        </div>
         <button class="login" popovertarget="popover"><?php echo $doctor_name; ?></button>
       </div>
       <div class="contenuemainpage">
@@ -45,33 +39,27 @@ $doctor_photo = $_SESSION['doctor_photo'];
           <h2>Bienvenue Dr. <?php echo $doctor_name; ?></h2>
           <div class="exploremenu">
             <div class="menucontentexplore">
-              <div class="barcontent1">Consultation plus rapide</div>
+              <div class="barcontent1">Gérer les Rendez-vous</div>
               <div class="barcontent2">
                 <div class="txtcontent">
-                  vous permet de consulter rapidement les rendez vous de vos
-                  proches
+                  accepter ou refuser les rendez vous
                 </div>
-                <div class="imgcontent">▸</div>
               </div>
             </div>
             <div class="menucontentexplore">
-              <div class="barcontent1">Consultation plus rapide</div>
+              <div class="barcontent1">Gérer les Patients</div>
               <div class="barcontent2">
                 <div class="txtcontent">
-                  vous permet de consulter rapidement les rendez vous de vos
-                  proches
+                  Voir la liste des patients 
                 </div>
-                <div class="imgcontent">▸</div>
               </div>
             </div>
             <div class="menucontentexplore">
-              <div class="barcontent1">Consultation plus rapide</div>
+              <div class="barcontent1">Voir les Statistiques</div>
               <div class="barcontent2">
                 <div class="txtcontent">
-                  vous permet de consulter rapidement les rendez vous de vos
-                  proches
+                  Consulter les statistiques et l'activité de la plateforme
                 </div>
-                <div class="imgcontent">▸</div>
               </div>
             </div>
           </div>
@@ -138,7 +126,7 @@ $doctor_photo = $_SESSION['doctor_photo'];
                 </div>
               </div>
             </div>
-            
+             
             <!-- Section des prescriptions -->
             <div class="dashboard-card prescription-section" style="display: none;">
               <h3><i class="fas fa-prescription"></i> Prescriptions</h3>

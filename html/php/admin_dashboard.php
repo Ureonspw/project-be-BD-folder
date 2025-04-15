@@ -298,7 +298,7 @@ $total_admins = $stmt->fetch()['total'];
                             </div>
                             <h5 class="card-title">Gérer les Patients</h5>
                             <p class="card-text">Créez et gérez les comptes patients. Consultez leurs dossiers médicaux et rendez-vous.</p>
-                            <a href="creationcompte.php" class="btn btn-primary btn-action">
+                            <a onclick="window.location.href='./creationcompteutilisateur.php'" class="btn btn-primary btn-action">
                                 <i class="fas fa-plus me-2"></i>Ajouter un Patient
                             </a>
                         </div>

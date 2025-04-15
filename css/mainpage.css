@@ -158,7 +158,7 @@ html{
   flex-direction: column;
 }
 .contentmainpage h2 {
-  font-size: 180px;
+  font-size: 130px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #fff;
 }
@@ -222,11 +222,11 @@ html{
   border: #000 1px solid;
 }
 .popover {
-  height: 740px;
+  height: 650px;
   width: 350px;
   border-radius: 20px;
-  margin-left: 420px;
-  margin-top: 10px;
+  margin-left: 440px;
+  margin-top: 15px;
   margin-bottom: 10px;
   border: #56535397 1px solid;
   box-shadow: #000 10px 10px 100px;

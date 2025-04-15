@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
   <body>
     <div class="container"><div class="video-background">
       <video autoplay muted loop id="background-video">
-        <source src="/assets/video/videobg2.mp4" type="video/mp4">
+        <source src="/assets/video/videobg1.mp4" type="video/mp4">
         <!-- Vous pouvez ajouter d'autres formats pour une meilleure compatibilité -->
         <source src="/assets/video/videobg2.mp4" type="video/webm">
         <!-- Fallback pour les navigateurs qui ne supportent pas la vidéo -->
@@ -61,19 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
       <div class="headercontainer">
         <div class="logo" onclick="window.location.href='/html/php/docteur_login.php'"></div>
         <div class="boxhdcontainer">
-          <a onclick="window.location.href='/html/php/creationcomptedocteur.php'">Accueil</a>
+          <a onclick="window.location.href=''">Accueil</a>
           <a href="#about">À Propos de nous</a>
           <a  href="#contact">Contacts</a>
           <a href="#services">Services</a>
         </div>
-        <button class="login" popovertarget="popover">Connexion</button>
+        <button class="login" id="loginButton" popovertarget="popover">Connexion</button>
       </div>
       <div class="contenuemainpage">
         <h1>
           Bienvenue sur votre plateforme de rendez-vous santé pour votre bien-être personnel
         </h1>
         <div class="contentmainpage">
-          <h2>Medi.Rdv</h2>
+          <h2>MediConnect</h2>
           <div class="exploremenu">
             <div class="menucontentexplore">
               <div class="barcontent1">Consultation plus rapide</div>
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
                   Vous permet de consulter rapidement les rendez-vous de vos
                   proches
                 </div>
-                <div class="imgcontent">▸</div>
+               
               </div>
             </div>
             <div class="menucontentexplore">
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
                 <div class="txtcontent">
                   Gérez facilement vos rendez-vous médicaux en quelques clics
                 </div>
-                <div class="imgcontent">▸</div>
+               
               </div>
             </div>
             <div class="menucontentexplore">
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
                 <div class="txtcontent">
                   Accédez à votre historique médical et suivez vos consultations
                 </div>
-                <div class="imgcontent">▸</div>
+               
               </div>
             </div>
           </div>
@@ -181,24 +181,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
             
             <div class="login-divider">
               <span>ou</span>
-            </div>
-            
-            <div class="social-login">
-              <p>Connectez-vous avec</p>
-              <div class="social-icons">
-                <button class="social-btn google" title="Se connecter avec Google">
-                  <i class="fab fa-google"></i>
-                  <span>Google</span>
-                </button>
-                <button class="social-btn facebook" title="Se connecter avec Facebook">
-                  <i class="fab fa-facebook-f"></i>
-                  <span>Facebook</span>
-                </button>
-                <button class="social-btn apple" title="Se connecter avec Apple">
-                  <i class="fab fa-apple"></i>
-                  <span>Apple</span>
-                </button>
-              </div>
             </div>
             
             <div class="login-footer">
@@ -283,32 +265,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
               </div>
               <div class="service-item">
                 <div class="service-icon">
-                  <img src="/assets/images/Active Notifications Icon.png" alt="Icône notifications">
-
-                </div>
-                <div class="service-text">
-                  <strong>Rappels automatiques</strong>
-                  <p>Notifications par SMS et email</p>
-                </div>
-              </div>
-              <div class="service-item">
-                <div class="service-icon">
                   <img src="/assets/images/Medical Services Icon.png" alt="Icône dossier médical">
 
                 </div>
                 <div class="service-text">
                   <strong>Dossier médical numérique</strong>
                   <p>Accédez à votre historique de consultations</p>
-                </div>
-              </div>
-              <div class="service-item">
-                <div class="service-icon">
-                  <img src="/assets/images/Videocam Icon.png" alt="Icône téléconsultation">
-
-                </div>
-                <div class="service-text">
-                  <strong>Téléconsultation</strong>
-                  <p>Consultez certains spécialistes à distance</p>
                 </div>
               </div>
             </div>
@@ -360,15 +322,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 
     <div class="connexion">
       <span> Qu'attends-tu alors ? <br> Rejoins-nous ! </span>
-      <div class="connexioncontainer">
-      <div class="connexion-button">
+      <div class="connexioncontainer" >
+      <div class="connexion-button" onclick="window.location.href='#loginButton'" >
         <div class="connexionbtn1cont">
           Connecte-toi à ton compte pour profiter des offres de notre plateforme
           <div class="slidebtn"> Connexion ✒︎</div>
         </div>
         
       </div>
-      <div class="connexion-button2">
+      <div class="connexion-button2" onclick="window.location.href='./html/php/creationcompteutilisateur.php'">
         <div class="connexionbtn1cont">
           Crée un compte pour découvrir tous nos services
           <div class="slidebtn"> Inscription ✒︎</div>

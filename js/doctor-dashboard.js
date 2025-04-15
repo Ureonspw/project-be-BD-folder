@@ -144,7 +144,7 @@ function updateAppointmentStatus(appointmentId, status) {
   const formData = new FormData();
   formData.append('appointment_id', appointmentId);
   formData.append('status', status);
-  
+
   fetch('../php/update_appointment.php', {
     method: 'POST',
     body: formData
