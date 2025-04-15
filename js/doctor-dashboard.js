@@ -145,7 +145,6 @@ function updateAppointmentStatus(appointmentId, status) {
   formData.append('appointment_id', appointmentId);
   formData.append('status', status);
 
-
   fetch('../php/update_appointment.php', {
     method: 'POST',
     body: formData
@@ -158,6 +157,23 @@ function updateAppointmentStatus(appointmentId, status) {
       loadAppointments('en_attente');
       loadAppointments('confirme');
       loadAppointments('termine');
+
+      // Si le rendez-vous est accepté, remplir le formulaire d'email
+      if (status === 'confirme') {
+        // Récupérer les détails du rendez-vous directement par son ID
+        fetch(`../php/get_appointment_details.php?id=${appointmentId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              mailPatient(data.appointment);
+            } else {
+              console.error('Erreur lors de la récupération des détails du rendez-vous:', data.message);
+            }
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des détails du rendez-vous:', error);
+          });
+      }
     } else {
       alert(data.message);
     }
@@ -809,12 +825,6 @@ function sendEmail() {
   });
 }
 
-
-
-
-
-
-
 try {
     emailjs.init("OFTyJSgF1HubqBCmk");
     document.getElementById('status').innerHTML = "EmailJS est prêt";
@@ -857,4 +867,43 @@ function sendEmail() {
             statusDiv.style.color = "red";
             console.log('FAILED...', error);
         });
+}
+
+// Fonction pour remplir et afficher le formulaire d'email
+function mailPatient(appointment) {
+    if (!appointment || !appointment.patient_email) {
+        console.error('Informations du rendez-vous manquantes');
+        return;
+    }
+
+    const date = new Date(appointment.date_rdv);
+    const formattedDate = date.toLocaleDateString('fr-FR', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    const formattedTime = date.toLocaleTimeString('fr-FR', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    });
+
+    // Remplir les champs du formulaire d'email
+    const recipientInput = document.getElementById('email-recipient');
+    const subjectInput = document.getElementById('email-subject');
+    const contentInput = document.getElementById('email-content');
+
+    if (recipientInput && subjectInput && contentInput) {
+        recipientInput.value = appointment.patient_email;
+        subjectInput.value = `Confirmation de votre rendez-vous du ${formattedDate}`;
+        contentInput.value = `Bonjour ${appointment.patient_prenom} ${appointment.patient_nom},\n\nJe vous confirme que votre rendez-vous du ${formattedDate} à ${formattedTime} a été accepté.\n\nN'oubliez pas de vous présenter 10 minutes avant l'heure du rendez-vous.\n\nCordialement,\nDr. ${appointment.doctor_prenom} ${appointment.doctor_nom}`;
+
+        // Faire défiler jusqu'à la section email
+        const emailSection = document.querySelector('.dashboard-card.email-section');
+        if (emailSection) {
+            emailSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    } else {
+        console.error('Champs du formulaire d\'email non trouvés');
+    }
 }
